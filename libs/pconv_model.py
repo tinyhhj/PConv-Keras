@@ -33,6 +33,16 @@ class PConvUnet(object):
                 running on one of the GPUs which is also training the UNet.
         """
         
+
+        # for error
+        from keras.backend.tensorflow_backend import set_session
+        config = tf.ConfigProto()
+        config.gpu_options.allow_growth = True  # dynamically grow the memory used on the GPU
+        # config.gpu_options.per_process_gpu_memory_fraction = 0.4
+        sess = tf.Session(config=config)
+        set_session(sess)  # set this TensorFlow session as the default session for Keras
+
+
         # Settings
         self.img_rows = img_rows
         self.img_cols = img_cols
