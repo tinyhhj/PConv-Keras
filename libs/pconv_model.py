@@ -276,7 +276,7 @@ class PConvUnet(object):
 
         # Load weights into model
         if not self.inference_only:
-            epoch = int(os.path.basename(filepath).split('.')[1].split('-')[0])
+            epoch = 50 #int(os.path.basename(filepath).split('.')[1].split('-')[0])
             assert epoch > 0, "Could not parse weight file. Should include the epoch"
             self.current_epoch = epoch
         self.model.load_weights(filepath)        
