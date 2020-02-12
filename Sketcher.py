@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 
 class Sketcher:
     def __init__(self, windowname, dests, colors_func):
@@ -28,3 +29,8 @@ class Sketcher:
             self.dirty = True
             self.prev_pt = pt
             self.show()
+    def save_files(self,dest):
+        a= np.random.randint(10000)
+        b=np.random.randint(10000)
+        cv2.imwrite(dest+str(a)+'_'+str(b)+'.jpg', self.dests[0])
+        cv2.imwrite(dest + str(a) + '_' + str(b) + '.jpg', self.dests[1])
